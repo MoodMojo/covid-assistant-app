@@ -1,11 +1,10 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Users/salmanyousuf/Downloads/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/salmanyousuf/covid-assistant-master"
-export "FLUTTER_TARGET=/Users/salmanyousuf/covid-assistant-master/lib/main.dart"
+export "FLUTTER_ROOT=M:\Software\flutter"
+export "FLUTTER_APPLICATION_PATH=C:\Users\modya\OneDrive\Desktop\covid-assistant"
+export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"
-export "SYMROOT=${SOURCE_ROOT}/../build/ios"
-export "FLUTTER_FRAMEWORK_DIR=/Users/salmanyousuf/Downloads/flutter/bin/cache/artifacts/engine/ios"
+export "SYMROOT=${SOURCE_ROOT}/../build\ios"
+export "FLUTTER_FRAMEWORK_DIR=M:\Software\flutter\bin\cache\artifacts\engine\ios"
 export "FLUTTER_BUILD_NAME=1.0.0"
 export "FLUTTER_BUILD_NUMBER=1"
-export "TRACK_WIDGET_CREATION=true"
