@@ -91,7 +91,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   Text subTitle(TextTheme textTheme) {
     return Text(
-      'Set your daily covid intake goal',
+      'Set your daily handwash goal',
       style: textTheme.subtitle.copyWith(fontWeight: FontWeight.w400),
     );
   }

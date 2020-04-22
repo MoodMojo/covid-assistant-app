@@ -38,7 +38,7 @@ class _CircleButtonState extends State<CircleButton> with TickerProviderStateMix
     final washBloc = Provider.of<AppBloc>(context).washBloc;
 
     return MaterialButton(
-      onPressed: () => washBloc.drinkcovid(),
+      onPressed: () => washBloc.handcovid(),
       height: 150,
       minWidth: 150,
       color: Colors.white,

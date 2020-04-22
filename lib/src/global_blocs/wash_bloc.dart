@@ -6,39 +6,39 @@ import 'package:covid_assistant_app/services/firestore/firestore_wash_service.da
 import 'package:covid_assistant_app/src/global_blocs/bloc_base.dart';
 
 class WashBloc implements BlocBase {
-  StreamSubscription _drinkStreamSubscription;
-  List<Wash> _drinksToday = List();
+  StreamSubscription _handStreamSubscription;
+  List<Wash> _handsToday = List();
   int _selectedWashAmount = 200;
 
-  final _drinkController = BehaviorSubject<List<Wash>>();
-  Function(List<Wash>) get _inWashs => _drinkController.sink.add;
-  Stream<List<Wash>> get outWashs => _drinkController.stream;
+  final _handController = BehaviorSubject<List<Wash>>();
+  Function(List<Wash>) get _inWashs => _handController.sink.add;
+  Stream<List<Wash>> get outWashs => _handController.stream;
 
   final _selectedWashAmountController = BehaviorSubject<int>();
   Function(int) get _inSelectedAmount => _selectedWashAmountController.sink.add;
   Stream<int> get outSelectedAmount => _selectedWashAmountController.stream;
 
   Stream<int> get outWashsAmount {
-    return outWashs.map((drinks) => drinks.fold<int>(0, (totalAmount, drink) => totalAmount + drink.amount));
+    return outWashs.map((hands) => hands.fold<int>(0, (totalAmount, hand) => totalAmount + hand.amount));
   }
 
   Future<void> init() async {
-    final drinkStream = await FirestoreWashService.getWashsStream(DateTime.now());
-    _drinkStreamSubscription = drinkStream.listen((querySnapshot) {
-      _drinksToday = querySnapshot.documents.map((doc) => Wash.fromDb(doc.data, doc.documentID)).toList();
-      _inWashs(_drinksToday);
+    final handStream = await FirestoreWashService.getWashsStream(DateTime.now());
+    _handStreamSubscription = handStream.listen((querySnapshot) {
+      _handsToday = querySnapshot.documents.map((doc) => Wash.fromDb(doc.data, doc.documentID)).toList();
+      _inWashs(_handsToday);
     });
 
     _inSelectedAmount(_selectedWashAmount);
   }
 
-  Future<void> drinkcovid() async {
-    final drink = Wash(DateTime.now(), 1);
-    FirestoreWashService.drinkcovid(drink);
+  Future<void> handcovid() async {
+    final hand = Wash(DateTime.now(), 1);
+    FirestoreWashService.handcovid(hand);
   }
 
-  Future<void> removeWash(Wash drink) async {
-    FirestoreWashService.removeWash(drink);
+  Future<void> removeWash(Wash hand) async {
+    FirestoreWashService.removeWash(hand);
   }
 
   set setWashAmount(int amount) {
@@ -48,8 +48,8 @@ class WashBloc implements BlocBase {
 
   @override
   void dispose() {
-    _drinkController.close();
+    _handController.close();
     _selectedWashAmountController.close();
-    _drinkStreamSubscription.cancel();
+    _handStreamSubscription.cancel();
   }
 }

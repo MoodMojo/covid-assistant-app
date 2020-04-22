@@ -6,10 +6,10 @@ import 'package:covid_assistant_app/src/global_blocs/app_bloc.dart';
 class covidEntryTile extends StatelessWidget {
   const covidEntryTile({
     Key key,
-    @required this.drink,
+    @required this.hand,
   }) : super(key: key);
 
-  final Wash drink;
+  final Wash hand;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class covidEntryTile extends StatelessWidget {
         color: Colors.red,
       ),
       // Can implement undo feature
-      onDismissed: (direction) => washBloc.removeWash(drink),
+      onDismissed: (direction) => washBloc.removeWash(hand),
       child: Container(
         decoration: BoxDecoration(
           border: Border(
@@ -30,8 +30,8 @@ class covidEntryTile extends StatelessWidget {
           ),
         ),
         child: ListTile(
-          title: Text(drink.amount.toString()),
-          subtitle: Text(drink.date.toString().substring(0, 10)),
+          title: Text(hand.amount.toString()),
+          subtitle: Text(hand.date.toString().substring(0, 10)),
         ),
       ),
     );

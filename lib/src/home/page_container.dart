@@ -25,7 +25,7 @@ class PageContainer extends StatefulWidget {
 class _PageContainerState extends State<PageContainer> {
   int _currentIndex = 1;
   final List<Widget> _children = [
-    CupsPage(),
+    NewsPage(),
     WashPage(),
     NotificationPage(),
   ];
@@ -115,8 +115,8 @@ class _PageContainerState extends State<PageContainer> {
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.local_drink),
-            title: Text('Cups'),
+            icon: Icon(Icons.public),
+            title: Text('News'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

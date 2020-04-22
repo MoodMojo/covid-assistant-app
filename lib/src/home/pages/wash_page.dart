@@ -28,12 +28,12 @@ class WashPage extends StatelessWidget {
             stream: washBlock.outWashs,
             initialData: [],
             builder: (context, snapshot) {
-              final drinks = snapshot.data;
+              final hands = snapshot.data;
               return ListView.builder(
-                itemCount: drinks.length,
+                itemCount: hands.length,
                 itemBuilder: (context, index) {
-                  final drink = drinks[index];
-                  return covidEntryTile(drink: drink);
+                  final hand = hands[index];
+                  return covidEntryTile(hand: hand);
                 },
               );
             },
